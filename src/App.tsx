@@ -55,9 +55,9 @@ function App() {
 
   return (
     <div className={`min-h-screen ${darkMode ? 'dark bg-gray-900' : 'bg-gray-50'}`}>
-      <header className={`${darkMode ? 'bg-gray-800' : 'bg-white'} shadow-sm`}>
+      <header className={`${darkMode ? 'bg-gray-800' : 'bg-white'} shadow-sm fixed w-full z-10`}>
         <div className="max-w-7xl mx-auto px-4 py-4">
-          <div className="flex justify-between items-center mb-4">
+          <div className="flex justify-between items-center">
             <h1 className={`text-2xl font-bold ${darkMode ? 'text-white' : 'text-gray-900'}`}>TechStore</h1>
             <div className="flex items-center gap-4">
               <button
@@ -82,39 +82,30 @@ function App() {
         </div>
       </header>
 
-      <div className={`relative overflow-hidden ${darkMode ? 'bg-gray-800' : 'bg-gray-100'}`}>
-        <div className="max-w-7xl mx-auto px-4 py-16 sm:py-24">
-          <div className="text-center">
-            <div className="relative mx-auto w-full max-w-xl mb-12">
-              <img
-                src="https://images.unsplash.com/photo-1557426272-fc759fdf7a8d?w=1200&q=80"
-                alt="Search Illustration"
-                className="w-full h-64 object-cover rounded-xl shadow-2xl"
+      <div className="relative h-screen">
+        <div className="absolute inset-0">
+          <img
+            src="https://images.unsplash.com/photo-1557426272-fc759fdf7a8d?w=1920&q=80"
+            alt="Hero Background"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+        </div>
+        
+        <div className="relative h-full flex flex-col items-center justify-center px-4 text-center">
+          <h2 className="text-5xl font-extrabold tracking-tight text-white sm:text-6xl mb-6">
+            Search Better, Find Better
+          </h2>
+          <div className="w-full max-w-3xl">
+            <div className="relative">
+              <input
+                type="text"
+                placeholder="Search products..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full px-4 py-4 pl-12 pr-4 rounded-lg border bg-white/90 backdrop-blur-sm border-gray-300 focus:ring-blue-500 focus:outline-none focus:ring-2 focus:border-transparent text-lg"
               />
-            </div>
-            <h2 className={`text-4xl font-extrabold tracking-tight sm:text-5xl ${darkMode ? 'text-white' : 'text-gray-900'}`}>
-              Search Better, Find Better
-            </h2>
-            <p className={`mt-4 text-xl ${darkMode ? 'text-gray-300' : 'text-gray-500'}`}>
-              Discover amazing tech products with our smart search
-            </p>
-            <div className="mt-8 max-w-3xl mx-auto">
-              <div className="relative">
-                <input
-                  type="text"
-                  placeholder="Search products..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className={`w-full px-4 py-3 pl-10 pr-4 rounded-lg border ${
-                    darkMode 
-                      ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400 focus:ring-blue-500' 
-                      : 'bg-white border-gray-300 focus:ring-blue-500'
-                  } focus:outline-none focus:ring-2 focus:border-transparent`}
-                />
-                <Search className={`absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 ${
-                  darkMode ? 'text-gray-400' : 'text-gray-400'
-                }`} />
-              </div>
+              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-6 w-6 text-gray-400" />
             </div>
           </div>
         </div>
